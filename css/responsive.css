@@ -1,0 +1,219 @@
+/* Responsive Styles */
+
+/* Large Devices (desktops, less than 1200px) */
+@media (max-width: 1199.98px) {
+    .container {
+        max-width: 960px;
+    }
+    
+    .hero h1 {
+        font-size: 42px;
+    }
+    
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Medium Devices (tablets, less than 992px) */
+@media (max-width: 991.98px) {
+    .container {
+        max-width: 720px;
+    }
+    
+    .desktop-nav {
+        display: none;
+    }
+    
+    .mobile-menu-toggle {
+        display: flex;
+    }
+    
+    .hero h1 {
+        font-size: 36px;
+    }
+    
+    .hero p {
+        font-size: 18px;
+    }
+    
+    .feature i {
+        font-size: 42px;
+    }
+    
+    .feature h3 {
+        font-size: 20px;
+    }
+    
+    .location-container {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-xl);
+    }
+    
+    .auth-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .auth-illustration {
+        display: none;
+    }
+}
+
+/* Small Devices (landscape phones, less than 768px) */
+@media (max-width: 767.98px) {
+    .container {
+        max-width: 540px;
+    }
+    
+    header .container {
+        padding: 0 var(--spacing-md);
+    }
+    
+    .logo h1 {
+        font-size: 20px;
+    }
+    
+    .hero {
+        min-height: 60vh;
+        padding: var(--spacing-xl) 0;
+    }
+    
+    .hero h1 {
+        font-size: 32px;
+    }
+    
+    .hero p {
+        font-size: 16px;
+    }
+    
+    .features-grid, .reviews-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-xl);
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .modal-content {
+        width: 90%;
+        margin: 30px auto;
+        padding: var(--spacing-lg);
+    }
+    
+    /* Order Page Responsive */
+    .payment-options {
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+    
+    .receipt-item-header, .receipt-item {
+        grid-template-columns: 2fr 0.5fr 1fr;
+    }
+    
+    .receipt-item-header span:nth-child(3), .receipt-item span:nth-child(3) {
+        display: none;
+    }
+    
+    /* Admin Dashboard Responsive */
+    .admin-container {
+        flex-direction: column;
+    }
+    
+    .admin-sidebar {
+        width: 100%;
+        position: static;
+        height: auto;
+    }
+    
+    .admin-content {
+        margin-left: 0;
+    }
+    
+    .summary-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Extra Small Devices (phones, less than 576px) */
+@media (max-width: 575.98px) {
+    .container {
+        padding: 0 var(--spacing-md);
+    }
+    
+    .hero {
+        min-height: 50vh;
+    }
+    
+    .hero h1 {
+        font-size: 28px;
+    }
+    
+    .features h2, .reviews h2, .faq h2, .location h2 {
+        font-size: 28px;
+    }
+    
+    .btn-primary, .btn-secondary {
+        width: 100%;
+    }
+    
+    .confirmation-buttons {
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+    
+    .summary-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .table-container {
+        overflow-x: auto;
+    }
+    
+    .admin-table {
+        width: 800px;
+    }
+    
+    .modal-content {
+        padding: var(--spacing-md);
+    }
+    
+    .receipt-item-header, .receipt-item {
+        grid-template-columns: 1fr 0.5fr 1fr;
+        font-size: 14px;
+    }
+}
+
+/* Height-based media queries for very short screens */
+@media (max-height: 600px) {
+    .hero {
+        min-height: auto;
+        padding: var(--spacing-xl) 0;
+    }
+}
+
+/* Dark Mode Specific Adjustments */
+@media (prefers-color-scheme: dark) {
+    body:not(.light-mode) {
+        --bg-color: #121212;
+        --bg-secondary: #1e1e1e;
+        --text-color: #f5f5f5;
+        --text-secondary: #b3b3b3;
+        --border-color: #424242;
+        --card-bg: #1e1e1e;
+        --nav-bg: #1e1e1e;
+        --header-bg: rgba(30, 30, 30, 0.95);
+        --footer-bg: #1e1e1e;
+        --footer-text: #b3b3b3;
+        --input-bg: #2c2c2c;
+        --input-border: #424242;
+        --modal-bg: #1e1e1e;
+        --backdrop: rgba(0, 0, 0, 0.7);
+    }
+}
