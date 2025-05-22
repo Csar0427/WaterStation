@@ -1,273 +1,488 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Order - Water Station</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body class="light-mode">
-    <!-- Top Banner -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body class="light-mode">
     <div class="top-banner">
-        <p><i class="fas fa-info-circle"></i> Cash and GCash payments only</p>
+      <p><i class="fas fa-info-circle"></i> Cash and GCash payments only</p>
     </div>
 
-    <!-- Header -->
     <header>
-        <div class="container">
-            <div class="logo">
-                <h1>Water Station</h1>
-            </div>
-            <nav class="desktop-nav">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="index.html#reviews">Reviews</a></li>
-                    <li><a href="index.html#faq">FAQ</a></li>
-                    <li><a href="index.html#location">Location</a></li>
-                    <li><a href="order.html" class="active">Order</a></li>
-                    <li><a href="login.html">Login</a></li>
-                </ul>
-            </nav>
-            <div class="theme-toggle">
-                <i class="fas fa-sun"></i>
-                <i class="fas fa-moon"></i>
-                <div class="toggle-ball"></div>
-            </div>
-            <div class="mobile-menu-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+      <div class="container">
+        <div class="logo">
+          <h1>Water Station</h1>
         </div>
-    </header>
-
-    <!-- Mobile Navigation -->
-    <nav class="mobile-nav">
-        <div class="close-mobile-nav">
-            <i class="fas fa-times"></i>
-        </div>
-        <ul>
+        <nav class="desktop-nav">
+          <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a href="order.html" class="active">Order</a></li>
             <li><a href="index.html#reviews">Reviews</a></li>
             <li><a href="index.html#faq">FAQ</a></li>
             <li><a href="index.html#location">Location</a></li>
-            <li><a href="login.html">Login</a></li>
-        </ul>
+            <li><a href="order.html" class="active">Order</a></li>
+            <li id="orderHistoryNavLink" style="display: none">
+              <a href="order-history.html">Order History</a>
+            </li>
+            <li><a href="login.html" id="navAuthLink">Login</a></li>
+          </ul>
+        </nav>
+        <div class="theme-toggle">
+          <i class="fas fa-sun"></i>
+          <i class="fas fa-moon"></i>
+          <div class="toggle-ball"></div>
+        </div>
+        <div class="mobile-menu-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </header>
+
+    <nav class="mobile-nav">
+      <div class="close-mobile-nav">
+        <i class="fas fa-times"></i>
+      </div>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="order.html" class="active">Order</a></li>
+        <li><a href="index.html#reviews">Reviews</a></li>
+        <li><a href="index.html#faq">FAQ</a></li>
+        <li><a href="index.html#location">Location</a></li>
+        <li id="mobileOrderHistoryNavLink" style="display: none">
+          <a href="order-history.html">Order History</a>
+        </li>
+        <li><a href="login.html" id="mobileNavAuthLink">Login</a></li>
+      </ul>
     </nav>
 
-    <!-- Order Form Section -->
     <section class="order-form">
-        <div class="container">
-            <h1>Place Your Order</h1>
-            <p class="delivery-notice"><i class="fas fa-truck"></i> Delivery available only in Zone A, B, and C.</p>
-            
-            <form id="waterOrderForm">
-                <div class="form-group">
-                    <label for="fullName">Full Name <span class="required">*</span></label>
-                    <input type="text" id="fullName" name="fullName" required>
-                    <div class="error-message" id="fullNameError"></div>
+      <div class="container">
+        <h1>Place Your Order</h1>
+        <p class="delivery-notice">
+          <i class="fas fa-truck"></i> Delivery available only in Zone A, B, and
+          C.
+        </p>
+
+        <form id="waterOrderForm">
+          <div class="form-group">
+            <label for="fullName"
+              >Full Name <span class="required">*</span></label
+            >
+            <input
+              type="text"
+              id="fullName"
+              name="fullName"
+              required
+              readonly
+            />
+            <div class="error-message" id="fullNameError"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email <span class="required">*</span></label>
+            <input type="email" id="email" name="email" required readonly />
+            <div class="error-message" id="emailError"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="phone"
+              >Phone Number <span class="required">*</span></label
+            >
+            <input type="tel" id="phone" name="phone" required readonly />
+            <div class="error-message" id="phoneError"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="zone">Zone <span class="required">*</span></label>
+            <select id="zone" name="zone" required>
+              <option value="">Select your zone</option>
+              <option value="Zone A">Zone A</option>
+              <option value="Zone B">Zone B</option>
+              <option value="Zone C">Zone C</option>
+            </select>
+            <div class="error-message" id="zoneError"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="address"
+              >Delivery Address <span class="required">*</span></label
+            >
+            <textarea id="address" name="address" required readonly></textarea>
+            <div class="error-message" id="addressError"></div>
+          </div>
+
+          <div class="form-group product-selection-group">
+            <label>Select Products <span class="required">*</span></label>
+            <p class="delivery-notice">
+              <i class="fas fa-info-circle"></i> Select at least one product
+              with a quantity greater than zero.
+            </p>
+
+            <div class="product-item-order">
+              <div class="product-info-order">
+                <h3>Purified Water (Per Gallon)</h3>
+                <p class="product-price-order">₱25.00</p>
+                <div class="quantity-selector">
+                  <button
+                    type="button"
+                    class="quantity-btn decrease-product"
+                    data-product-id="P001"
+                  >
+                    -
+                  </button>
+                  <input
+                    type="number"
+                    class="product-quantity-input"
+                    data-product-id="P001"
+                    value="0"
+                    min="0"
+                    readonly
+                  />
+                  <button
+                    type="button"
+                    class="quantity-btn increase-product"
+                    data-product-id="P001"
+                  >
+                    +
+                  </button>
                 </div>
-                
-                <div class="form-group">
-                    <label for="email">Email <span class="required">*</span></label>
-                    <input type="email" id="email" name="email" required>
-                    <div class="error-message" id="emailError"></div>
+              </div>
+            </div>
+
+            <div class="product-item-order">
+              <div class="product-info-order">
+                <h3>5 Gallons Water</h3>
+                <p class="product-price-order">₱150.00</p>
+                <div class="quantity-selector">
+                  <button
+                    type="button"
+                    class="quantity-btn decrease-product"
+                    data-product-id="P002"
+                  >
+                    -
+                  </button>
+                  <input
+                    type="number"
+                    class="product-quantity-input"
+                    data-product-id="P002"
+                    value="0"
+                    min="0"
+                    readonly
+                  />
+                  <button
+                    type="button"
+                    class="quantity-btn increase-product"
+                    data-product-id="P002"
+                  >
+                    +
+                  </button>
                 </div>
-                
-                <div class="form-group">
-                    <label for="phone">Phone Number <span class="required">*</span></label>
-                    <input type="tel" id="phone" name="phone" required>
-                    <div class="error-message" id="phoneError"></div>
+              </div>
+            </div>
+
+            <div class="product-item-order">
+              <div class="product-info-order">
+                <h3>Water Dispenser</h3>
+                <p class="product-price-order">₱1250.00</p>
+                <div class="quantity-selector">
+                  <button
+                    type="button"
+                    class="quantity-btn decrease-product"
+                    data-product-id="P003"
+                  >
+                    -
+                  </button>
+                  <input
+                    type="number"
+                    class="product-quantity-input"
+                    data-product-id="P003"
+                    value="0"
+                    min="0"
+                    readonly
+                  />
+                  <button
+                    type="button"
+                    class="quantity-btn increase-product"
+                    data-product-id="P003"
+                  >
+                    +
+                  </button>
                 </div>
-                
-                <div class="form-group">
-                    <label for="zone">Zone <span class="required">*</span></label>
-                    <select id="zone" name="zone" required>
-                        <option value="">Select your zone</option>
-                        <option value="Zone A">Zone A</option>
-                        <option value="Zone B">Zone B</option>
-                        <option value="Zone C">Zone C</option>
-                    </select>
-                    <div class="error-message" id="zoneError"></div>
+              </div>
+            </div>
+
+            <div class="product-item-order">
+              <div class="product-info-order">
+                <h3>Alkaline (Per Gallon)</h3>
+                <p class="product-price-order">₱35.00</p>
+                <div class="quantity-selector">
+                  <button
+                    type="button"
+                    class="quantity-btn decrease-product"
+                    data-product-id="P004"
+                  >
+                    -
+                  </button>
+                  <input
+                    type="number"
+                    class="product-quantity-input"
+                    data-product-id="P004"
+                    value="0"
+                    min="0"
+                    readonly
+                  />
+                  <button
+                    type="button"
+                    class="quantity-btn increase-product"
+                    data-product-id="P004"
+                  >
+                    +
+                  </button>
                 </div>
-                
-                <div class="form-group">
-                    <label for="address">Delivery Address <span class="required">*</span></label>
-                    <textarea id="address" name="address" required></textarea>
-                    <div class="error-message" id="addressError"></div>
+              </div>
+            </div>
+
+            <div class="product-item-order">
+              <div class="product-info-order">
+                <h3>Distilled Water 20L</h3>
+                <p class="product-price-order">₱320.00</p>
+                <div class="quantity-selector">
+                  <button
+                    type="button"
+                    class="quantity-btn decrease-product"
+                    data-product-id="P005"
+                  >
+                    -
+                  </button>
+                  <input
+                    type="number"
+                    class="product-quantity-input"
+                    data-product-id="P005"
+                    value="0"
+                    min="0"
+                    readonly
+                  />
+                  <button
+                    type="button"
+                    class="quantity-btn increase-product"
+                    data-product-id="P005"
+                  >
+                    +
+                  </button>
                 </div>
-                
-                <div class="form-group">
-                    <label for="gallons">Number of Gallons <span class="required">*</span></label>
-                    <div class="quantity-selector">
-                        <button type="button" class="quantity-btn decrease">-</button>
-                        <input type="number" id="gallons" name="gallons" min="1" value="1" required>
-                        <button type="button" class="quantity-btn increase">+</button>
-                    </div>
-                    <div class="error-message" id="gallonsError"></div>
-                </div>
-                
-                <div class="form-group">
-                    <label>Payment Method <span class="required">*</span></label>
-                    <p class="delivery-notice"><i class="fas fa-warning"></i>If Gcash Here's the number +123456789.</p>
-                    <div class="payment-options">
-                        <div class="payment-option">
-                            <input type="radio" id="cash" name="paymentMethod" value="Cash" checked>
-                            <label for="cash"><i class="fas fa-money-bill-wave"></i> Cash on Delivery</label>
-                        </div>
-                        <div class="payment-option">
-                            <input type="radio" id="gcash" name="paymentMethod" value="GCash">
-                            <label for="gcash"><i class="fas fa-mobile-alt"></i> GCash</label>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="form-group total-section">
-                    <h3>Order Summary</h3>
-                    <div class="summary-item">
-                        <span>Price per Gallon:</span>
-                        <span>₱50.00</span>
-                    </div>
-                    <div class="summary-item">
-                        <span>Number of Gallons:</span>
-                        <span id="summaryGallons">1</span>
-                    </div>
-                    <div class="summary-item">
-                        <span>Delivery Fee:</span>
-                        <span>₱20.00</span>
-                    </div>
-                    <div class="summary-item total">
-                        <span>Total Amount:</span>
-                        <span id="totalAmount">₱70.00</span>
-                    </div>
-                </div>
-                
-                <button type="submit" class="btn-primary">Place Order</button>
-            </form>
-        </div>
+              </div>
+            </div>
+
+            <div class="error-message" id="productsError"></div>
+          </div>
+
+          <div class="form-group">
+            <label>Payment Method <span class="required">*</span></label>
+            <p class="delivery-notice">
+              <i class="fas fa-warning"></i>If Gcash Here's the number
+              +123456789.
+            </p>
+            <div class="payment-options">
+              <div class="payment-option">
+                <input
+                  type="radio"
+                  id="cash"
+                  name="paymentMethod"
+                  value="Cash"
+                  checked
+                />
+                <label for="cash"
+                  ><i class="fas fa-money-bill-wave"></i> Cash on
+                  Delivery</label
+                >
+              </div>
+              <div class="payment-option">
+                <input
+                  type="radio"
+                  id="gcash"
+                  name="paymentMethod"
+                  value="GCash"
+                />
+                <label for="gcash"
+                  ><i class="fas fa-mobile-alt"></i> GCash</label
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group total-section">
+            <h3>Order Summary</h3>
+            <div id="summaryProductList">
+              <div class="summary-item">
+                <span>No items selected</span><span></span>
+              </div>
+            </div>
+            <div class="summary-item">
+              <span>Delivery Fee:</span>
+              <span>₱20.00</span>
+            </div>
+            <div class="summary-item total">
+              <span>Total Amount:</span>
+              <span id="totalAmount">₱20.00</span>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-primary">Place Order</button>
+        </form>
+      </div>
     </section>
 
-    <!-- Order Confirmation Modal -->
     <div id="orderConfirmModal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <h2>Confirm Your Order</h2>
-            <div class="order-details">
-                <p><strong>Name:</strong> <span id="confirmName"></span></p>
-                <p><strong>Phone:</strong> <span id="confirmPhone"></span></p>
-                <p><strong>Delivery Address:</strong> <span id="confirmAddress"></span></p>
-                <p><strong>Zone:</strong> <span id="confirmZone"></span></p>
-                <p><strong>Gallons:</strong> <span id="confirmGallons"></span></p>
-                <p><strong>Payment Method:</strong> <span id="confirmPayment"></span></p>
-                <p><strong>Total Amount:</strong> <span id="confirmAmount"></span></p>
-            </div>
-            <div class="confirmation-buttons">
-                <button class="btn-secondary" id="editOrderBtn">Edit Order</button>
-                <button class="btn-primary" id="confirmOrderBtn">Confirm Order</button>
-            </div>
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2>Confirm Your Order</h2>
+        <div class="order-details">
+          <p><strong>Name:</strong> <span id="confirmName"></span></p>
+          <p><strong>Phone:</strong> <span id="confirmPhone"></span></p>
+          <p>
+            <strong>Delivery Address:</strong> <span id="confirmAddress"></span>
+          </p>
+          <p><strong>Zone:</strong> <span id="confirmZone"></span></p>
+          <p><strong>Items:</strong></p>
+          <ul id="confirmItemsList"></ul>
+          <p>
+            <strong>Payment Method:</strong> <span id="confirmPayment"></span>
+          </p>
+          <p><strong>Total Amount:</strong> <span id="confirmAmount"></span></p>
         </div>
+        <div class="confirmation-buttons">
+          <button class="btn-secondary" id="editOrderBtn">Edit Order</button>
+          <button class="btn-primary" id="confirmOrderBtn">
+            Confirm Order
+          </button>
+        </div>
+      </div>
     </div>
 
-    <!-- Order Success Modal -->
     <div id="orderSuccessModal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <div class="success-icon">
-                <i class="fas fa-check-circle"></i>
-            </div>
-            <h2>Order Placed Successfully!</h2>
-            <div class="receipt">
-                <div class="receipt-header">
-                    <h3>Water Station</h3>
-                    <p>123 Water Street, Zone A</p>
-                    <p>(123) 456-7890</p>
-                </div>
-                <div class="receipt-details">
-                    <p><strong>Order ID:</strong> <span id="receiptOrderId"></span></p>
-                    <p><strong>Date:</strong> <span id="receiptDate"></span></p>
-                    <p><strong>Customer:</strong> <span id="receiptName"></span></p>
-                    <p><strong>Delivery Address:</strong> <span id="receiptAddress"></span></p>
-                    <p><strong>Phone:</strong> <span id="receiptPhone"></span></p>
-                    <div class="receipt-items">
-                        <div class="receipt-item-header">
-                            <span>Item</span>
-                            <span>Qty</span>
-                            <span>Price</span>
-                            <span>Total</span>
-                        </div>
-                        <div class="receipt-item">
-                            <span>Water Gallon</span>
-                            <span id="receiptGallons">1</span>
-                            <span>₱50.00</span>
-                            <span id="receiptSubtotal">₱50.00</span>
-                        </div>
-                        <div class="receipt-item">
-                            <span>Delivery Fee</span>
-                            <span>1</span>
-                            <span>₱20.00</span>
-                            <span>₱20.00</span>
-                        </div>
-                    </div>
-                    <div class="receipt-total">
-                        <p><strong>Total Amount:</strong> <span id="receiptTotal">₱70.00</span></p>
-                        <p><strong>Payment Method:</strong> <span id="receiptPayment">Cash on Delivery</span></p>
-                    </div>
-                </div>
-                <div class="receipt-footer">
-                    <p>Thank you for your order!</p>
-                    <p>Our delivery team will contact you shortly.</p>
-                </div>
-            </div>
-            <button class="btn-primary" id="backToHomeBtn">Back to Home</button>
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <div class="success-icon">
+          <i class="fas fa-check-circle"></i>
         </div>
+        <h2>Order Placed Successfully!</h2>
+        <div class="receipt">
+          <div class="receipt-header">
+            <h3>Water Station</h3>
+            <p>123 Water Street, Zone A</p>
+            <p>(123) 456-7890</p>
+          </div>
+          <div class="receipt-details">
+            <p><strong>Order ID:</strong> <span id="receiptOrderId"></span></p>
+            <p><strong>Date:</strong> <span id="receiptDate"></span></p>
+            <p><strong>Customer:</strong> <span id="receiptName"></span></p>
+            <p>
+              <strong>Delivery Address:</strong>
+              <span id="receiptAddress"></span>
+            </p>
+            <p><strong>Phone:</strong> <span id="receiptPhone"></span></p>
+            <div class="receipt-items">
+              <div class="receipt-item-header">
+                <span>Item</span>
+                <span>Qty</span>
+                <span>Price</span>
+                <span>Total</span>
+              </div>
+              <div id="receiptProductItems"></div>
+              <div class="receipt-item">
+                <span>Delivery Fee</span>
+                <span>1</span>
+                <span>₱20.00</span>
+                <span>₱20.00</span>
+              </div>
+            </div>
+            <div class="receipt-total">
+              <p>
+                <strong>Total Amount:</strong>
+                <span id="receiptTotal">₱70.00</span>
+              </p>
+              <p>
+                <strong>Payment Method:</strong>
+                <span id="receiptPayment">Cash on Delivery</span>
+              </p>
+            </div>
+          </div>
+          <div class="receipt-footer">
+            <p>Thank you for your order!</p>
+            <p>Our delivery team will contact you shortly.</p>
+          </div>
+        </div>
+        <button class="btn-primary" id="backToHomeBtn">Back to Home</button>
+      </div>
     </div>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <h2>Water Station</h2>
-                    <p>Pure water, delivered.</p>
-                </div>
-                <div class="footer-links">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="order.html">Order</a></li>
-                        <li><a href="index.html#reviews">Reviews</a></li>
-                        <li><a href="index.html#faq">FAQ</a></li>
-                        <li><a href="index.html#location">Location</a></li>
-                    </ul>
-                </div>
-                <div class="footer-contact">
-                    <h3>Contact Us</h3>
-                    <p><i class="fas fa-phone"></i> (123) 456-7890</p>
-                    <p><i class="fas fa-envelope"></i> info@waterstation.com</p>
-                    <div class="social-media">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Water Station. All rights reserved.</p>
-                <div class="footer-bottom-links">
-                    <a href="#">Terms of Service</a>
-                    <a href="#">Privacy Policy</a>
-                </div>
-            </div>
+    <div id="loginRequiredModal" class="modal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <div class="warning-icon">
+          <i class="fas fa-exclamation-triangle"></i>
         </div>
+        <h2>Login Required</h2>
+        <p>Please log in to your account to place an order.</p>
+        <div class="confirmation-buttons">
+          <button class="btn-primary" id="goToLoginBtn">Go to Login</button>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-logo">
+            <h2>Water Station</h2>
+            <p>Pure water, delivered.</p>
+          </div>
+          <div class="footer-links">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="order.html">Order</a></li>
+              <li><a href="index.html#reviews">Reviews</a></li>
+              <li><a href="index.html#faq">FAQ</a></li>
+              <li><a href="index.html#location">Location</a></li>
+            </ul>
+          </div>
+          <div class="footer-contact">
+            <h3>Contact Us</h3>
+            <p><i class="fas fa-phone"></i> (123) 456-7890</p>
+            <p><i class="fas fa-envelope"></i> info@waterstation.com</p>
+            <div class="social-media">
+              <a href="#"><i class="fab fa-facebook"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 Water Station. All rights reserved.</p>
+          <div class="footer-bottom-links">
+            <a href="#">Terms of Service</a>
+            <a href="#">Privacy Policy</a>
+          </div>
+        </div>
+      </div>
     </footer>
 
     <script src="js/main.js"></script>
     <script src="js/navigation.js"></script>
-    <script src="js/order.js"></script>
     <script src="js/animations.js"></script>
-</body>
+    <script src="js/auth.js"></script>
+    <script src="js/order.js"></script>
+    <script src="js/order-history.js"></script>
+  </body>
 </html>

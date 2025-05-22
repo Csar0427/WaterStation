@@ -8,6 +8,8 @@ document.addEventListener("DOMContentLoaded", function () {
   // Helper function to remove the current user from localStorage
   function logoutUser() {
     localStorage.removeItem("currentUser");
+    // Also remove any order-related local storage if desired, though usually kept for history
+    // localStorage.removeItem("waterStationOrders"); // <-- Uncomment if you want to clear orders on logout
     window.location.href = "login.html"; // Redirect to login page after logout
   }
 
@@ -21,6 +23,12 @@ document.addEventListener("DOMContentLoaded", function () {
     // Select the mobile navigation login link
     const mobileLoginLink = document.querySelector(
       'nav.mobile-nav ul li a[href="login.html"]'
+    );
+
+    // New: Select Order History navigation links
+    const orderHistoryNavLink = document.getElementById("orderHistoryNavLink");
+    const mobileOrderHistoryNavLink = document.getElementById(
+      "mobileOrderHistoryNavLink"
     );
 
     if (desktopLoginLink && mobileLoginLink) {
@@ -43,6 +51,11 @@ document.addEventListener("DOMContentLoaded", function () {
           e.preventDefault(); // Prevent default link behavior
           logoutUser();
         });
+
+        // SHOW Order History links
+        if (orderHistoryNavLink) orderHistoryNavLink.style.display = "block";
+        if (mobileOrderHistoryNavLink)
+          mobileOrderHistoryNavLink.style.display = "block";
       } else {
         // User is not logged in: Revert to Login
         desktopLoginLink.innerHTML = `Login`;
@@ -53,6 +66,11 @@ document.addEventListener("DOMContentLoaded", function () {
         mobileLoginLink.innerHTML = `Login`;
         mobileLoginLink.href = "login.html";
         mobileLoginLink.removeEventListener("click", logoutUser);
+
+        // HIDE Order History links
+        if (orderHistoryNavLink) orderHistoryNavLink.style.display = "none";
+        if (mobileOrderHistoryNavLink)
+          mobileOrderHistoryNavLink.style.display = "none";
       }
     }
   }
@@ -136,6 +154,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const name = document.getElementById("signupName").value;
       const email = document.getElementById("signupEmail").value;
       const phone = document.getElementById("signupPhone").value;
+      const address = document.getElementById("signupAddress").value; // NEW: Get address
       const password = document.getElementById("signupPassword").value;
       const confirmPassword = document.getElementById(
         "signupConfirmPassword"
@@ -182,6 +201,14 @@ document.addEventListener("DOMContentLoaded", function () {
         hideError("signupPhone");
       }
 
+      // NEW: Validate Address
+      if (!address) {
+        showError("signupAddress", "Please enter your delivery address");
+        isValid = false;
+      } else {
+        hideError("signupAddress");
+      }
+
       // Validate Password
       if (!password) {
         showError("signupPassword", "Please enter a password");
@@ -223,6 +250,7 @@ document.addEventListener("DOMContentLoaded", function () {
           email,
           password, // In a real app, hash this password!
           phone,
+          address, // NEW: Include address in user object
           role: "customer", // Default role for new signups
         };
 
