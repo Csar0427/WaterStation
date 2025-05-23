@@ -1,224 +1,239 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin Dashboard - Water Station</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/responsive.css">
-    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+    <link rel="stylesheet" href="css/admin.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body class="light-mode admin-body">
-    <!-- Admin Header -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body class="light-mode admin-body">
     <header class="admin-header">
-        <div class="container">
-            <div class="admin-logo">
-                <h1>Water Station</h1>
-                <span>Admin Dashboard</span>
-            </div>
-            <div class="admin-controls">
-                <div class="theme-toggle">
-                    <i class="fas fa-sun"></i>
-                    <i class="fas fa-moon"></i>
-                    <div class="toggle-ball"></div>
-                </div>
-                <div class="admin-profile">
-                    <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg" alt="Admin">
-                    <div class="admin-dropdown">
-                        <span>Admin User</span>
-                        <i class="fas fa-chevron-down"></i>
-                        <div class="admin-dropdown-menu">
-                            <a href="#"><i class="fas fa-user"></i> Profile</a>
-                            <a href="#"><i class="fas fa-cog"></i> Settings</a>
-                            <a href="login.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <div class="container">
+        <div class="admin-logo">
+          <h1>Water Station</h1>
+          <span>Admin Dashboard</span>
         </div>
+        <div class="admin-controls">
+          <div class="theme-toggle">
+            <i class="fas fa-sun"></i>
+            <i class="fas fa-moon"></i>
+            <div class="toggle-ball"></div>
+          </div>
+          <div class="admin-profile">
+            <img
+              src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg"
+              alt="Admin"
+            />
+            <div class="admin-dropdown">
+              <span>Admin User</span>
+              <i class="fas fa-chevron-down"></i>
+              <div class="admin-dropdown-menu">
+                <a href="#"><i class="fas fa-user"></i> Profile</a>
+                <a href="#"><i class="fas fa-cog"></i> Settings</a>
+                <a href="login.html"
+                  ><i class="fas fa-sign-out-alt"></i> Logout</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </header>
 
-    <!-- Admin Sidebar -->
     <div class="admin-container">
-        <aside class="admin-sidebar">
-            <nav>
-                <ul>
-                    <li class="active">
-                        <a href="#"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fas fa-shopping-cart"></i> Orders</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fas fa-users"></i> Customers</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fas fa-truck"></i> Delivery</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fas fa-star"></i> Reviews</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fas fa-chart-bar"></i> Reports</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fas fa-cog"></i> Settings</a>
-                    </li>
-                    <li class="sidebar-footer">
-                        <a href="index.html"><i class="fas fa-home"></i> Back to Website</a>
-                    </li>
-                </ul>
-            </nav>
-        </aside>
+      <aside class="admin-sidebar">
+        <nav>
+          <ul>
+            <li class="active">
+              <a href="#"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+            </li>
+            <li>
+              <a href="#"><i class="fas fa-shopping-cart"></i> Orders</a>
+            </li>
+            <li>
+              <a href="#"><i class="fas fa-users"></i> Customers</a>
+            </li>
+            <li>
+              <a href="#"><i class="fas fa-truck"></i> Delivery</a>
+            </li>
+            <li>
+              <a href="#"><i class="fas fa-star"></i> Reviews</a>
+            </li>
+            <li>
+              <a href="#"><i class="fas fa-chart-bar"></i> Reports</a>
+            </li>
+            <li>
+              <a href="#"><i class="fas fa-cog"></i> Settings</a>
+            </li>
+            <li class="sidebar-footer">
+              <a href="index.html"
+                ><i class="fas fa-home"></i> Back to Website</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </aside>
 
-        <!-- Admin Content -->
-        <main class="admin-content">
-            <div class="page-header">
-                <h1>Dashboard</h1>
-                <p>Welcome back, Admin User!</p>
+      <main class="admin-content">
+        <div class="page-header">
+          <h1>Dashboard</h1>
+          <p>Welcome back, Admin User!</p>
+        </div>
+
+        <div class="summary-cards">
+          <div class="summary-card">
+            <div class="summary-icon">
+              <i class="fas fa-shopping-cart"></i>
             </div>
-
-            <!-- Summary Cards -->
-            <div class="summary-cards">
-                <div class="summary-card">
-                    <div class="summary-icon">
-                        <i class="fas fa-shopping-cart"></i>
-                    </div>
-                    <div class="summary-info">
-                        <h3>24</h3>
-                        <p>New Orders</p>
-                    </div>
-                </div>
-                <div class="summary-card">
-                    <div class="summary-icon">
-                        <i class="fas fa-truck"></i>
-                    </div>
-                    <div class="summary-info">
-                        <h3>18</h3>
-                        <p>Pending Deliveries</p>
-                    </div>
-                </div>
-                <div class="summary-card">
-                    <div class="summary-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <div class="summary-info">
-                        <h3>156</h3>
-                        <p>Active Customers</p>
-                    </div>
-                </div>
-                <div class="summary-card">
-                    <div class="summary-icon">
-                        <i class="fas fa-money-bill-wave"></i>
-                    </div>
-                    <div class="summary-info">
-                        <h3>₱12,450</h3>
-                        <p>Today's Revenue</p>
-                    </div>
-                </div>
+            <div class="summary-info">
+              <h3>24</h3>
+              <p>New Orders</p>
             </div>
+          </div>
+          <div class="summary-card">
+            <div class="summary-icon">
+              <i class="fas fa-truck"></i>
+            </div>
+            <div class="summary-info">
+              <h3>18</h3>
+              <p>Pending Deliveries</p>
+            </div>
+          </div>
+          <div class="summary-card">
+            <div class="summary-icon">
+              <i class="fas fa-users"></i>
+            </div>
+            <div class="summary-info">
+              <h3>156</h3>
+              <p>Active Customers</p>
+            </div>
+          </div>
+          <div class="summary-card">
+            <div class="summary-icon">
+              <i class="fas fa-money-bill-wave"></i>
+            </div>
+            <div class="summary-info">
+              <h3>₱12,450</h3>
+              <p>Today's Revenue</p>
+            </div>
+          </div>
+        </div>
 
-            <!-- Recent Orders Section -->
-            <section class="admin-section">
-                <div class="section-header">
-                    <h2>Recent Orders</h2>
-                    <a href="#" class="btn-secondary">View All Orders</a>
-                </div>
-                
-                <div class="table-container">
-                    <table class="admin-table">
-                        <thead>
-                            <tr>
-                                <th>Order ID</th>
-                                <th>Customer</th>
-                                <th>Address</th>
-                                <th>Date</th>
-                                <th>Gallons</th>
-                                <th>Payment</th>
-                                <th>Status</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody id="ordersTableBody">
-                            <!-- Orders will be dynamically loaded here -->
-                        </tbody>
-                    </table>
-                </div>
-            </section>
+        <section class="admin-section">
+          <div class="section-header">
+            <h2>Recent Orders</h2>
+            <a href="#" class="btn-secondary">View All Orders</a>
+          </div>
 
-            <!-- Recent Reviews Section -->
-            <section class="admin-section">
-                <div class="section-header">
-                    <h2>Recent Reviews</h2>
-                    <a href="#" class="btn-secondary">View All Reviews</a>
-                </div>
-                
-                <div class="reviews-grid">
-                    <!-- Reviews will be dynamically loaded here -->
-                </div>
-            </section>
-        </main>
+          <div class="table-container">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Order ID</th>
+                  <th>Customer</th>
+                  <th>Address</th>
+                  <th>Date</th>
+                  <th>Items</th>
+                  <th>Payment</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="ordersTableBody"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="admin-section">
+          <div class="section-header">
+            <h2>Recent Reviews</h2>
+            <a href="#" class="btn-secondary">View All Reviews</a>
+          </div>
+
+          <div class="reviews-grid"></div>
+        </section>
+      </main>
     </div>
 
-    <!-- Order Details Modal -->
     <div id="orderDetailsModal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <h2>Order Details</h2>
-            <div class="order-details">
-                <div class="order-detail-header">
-                    <div>
-                        <h3>Order #<span id="detailOrderId"></span></h3>
-                        <p>Placed on <span id="detailOrderDate"></span></p>
-                    </div>
-                    <div class="order-status">
-                        <span id="detailOrderStatus">Pending</span>
-                    </div>
-                </div>
-                
-                <div class="order-detail-grid">
-                    <div class="detail-group">
-                        <h4>Customer Information</h4>
-                        <p><strong>Name:</strong> <span id="detailCustomerName"></span></p>
-                        <p><strong>Email:</strong> <span id="detailCustomerEmail"></span></p>
-                        <p><strong>Phone:</strong> <span id="detailCustomerPhone"></span></p>
-                    </div>
-                    
-                    <div class="detail-group">
-                        <h4>Delivery Information</h4>
-                        <p><strong>Address:</strong> <span id="detailCustomerAddress"></span></p>
-                        <p><strong>Zone:</strong> <span id="detailCustomerZone"></span></p>
-                    </div>
-                    
-                    <div class="detail-group">
-                        <h4>Order Summary</h4>
-                        <div class="detail-item">
-                            <span>Water Gallon x <span id="detailGallons"></span></span>
-                            <span id="detailSubtotal">₱250.00</span>
-                        </div>
-                        <div class="detail-item">
-                            <span>Delivery Fee</span>
-                            <span>₱20.00</span>
-                        </div>
-                        <div class="detail-item total">
-                            <span>Total Amount</span>
-                            <span id="detailTotal">₱270.00</span>
-                        </div>
-                        <p><strong>Payment Method:</strong> <span id="detailPaymentMethod">Cash on Delivery</span></p>
-                    </div>
-                </div>
-                
-                <div class="order-detail-actions">
-                    <button class="btn-secondary" id="updateStatusBtn">Update Status</button>
-                    <button class="btn-primary" id="assignDeliveryBtn">Assign Delivery</button>
-                </div>
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2>Order Details</h2>
+        <div class="order-details">
+          <div class="order-detail-header">
+            <div>
+              <h3>Order #<span id="detailOrderId"></span></h3>
+              <p>Placed on <span id="detailOrderDate"></span></p>
             </div>
+            <div class="order-status">
+              <span id="detailOrderStatus"></span>
+            </div>
+          </div>
+
+          <div class="order-detail-grid">
+            <div class="detail-group">
+              <h4>Customer Information</h4>
+              <p>
+                <strong>Name:</strong> <span id="detailCustomerName"></span>
+              </p>
+              <p>
+                <strong>Email:</strong> <span id="detailCustomerEmail"></span>
+              </p>
+              <p>
+                <strong>Phone:</strong> <span id="detailCustomerPhone"></span>
+              </p>
+            </div>
+
+            <div class="detail-group">
+              <h4>Delivery Information</h4>
+              <p>
+                <strong>Address:</strong>
+                <span id="detailCustomerAddress"></span>
+              </p>
+              <p>
+                <strong>Zone:</strong> <span id="detailCustomerZone"></span>
+              </p>
+            </div>
+
+            <div class="detail-group">
+              <h4>Order Summary</h4>
+              <div id="modalOrderItems"></div>
+
+              <div class="detail-item">
+                <span>Delivery Fee</span>
+                <span id="detailDeliveryFee">₱20.00</span>
+              </div>
+              <div class="detail-item total">
+                <span>Total Amount</span>
+                <span id="detailTotal">₱270.00</span>
+              </div>
+              <p>
+                <strong>Payment Method:</strong>
+                <span id="detailPaymentMethod">Cash on Delivery</span>
+              </p>
+            </div>
+          </div>
+
+          <div class="order-detail-actions">
+            <button class="btn-secondary" id="updateStatusBtn">
+              Update Status
+            </button>
+            <button class="btn-primary" id="assignDeliveryBtn">
+              Assign Delivery
+            </button>
+          </div>
         </div>
+      </div>
     </div>
 
     <script src="js/main.js"></script>
     <script src="js/admin.js"></script>
-</body>
+  </body>
 </html>

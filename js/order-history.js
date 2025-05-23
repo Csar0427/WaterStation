@@ -14,6 +14,24 @@ document.addEventListener("DOMContentLoaded", function () {
     return `₱${parseFloat(amount).toFixed(2)}`;
   }
 
+  // NEW FUNCTION: Formats date to "Month Day, Year at Hour:Minute AM/PM"
+  function formatOrderDate(dateString) {
+    const date = new Date(dateString);
+    if (isNaN(date.getTime())) {
+      return "N/A"; // Return N/A if dateString is invalid
+    }
+
+    const options = {
+      year: "numeric",
+      month: "long", // "May"
+      day: "numeric", // "22"
+      hour: "numeric", // "10"
+      minute: "2-digit", // "30"
+      hour12: true, // "AM/PM"
+    };
+    return date.toLocaleString("en-US", options);
+  }
+
   // Function to get current user (assuming auth.js loads first and makes it global)
   function getCurrentUser() {
     // Access window.getCurrentUser to ensure it's from the globally exposed function
@@ -66,7 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
       // Determine status badge class
       let statusClass = "";
       if (order.status) {
-        statusClass = order.status.toLowerCase();
+        statusClass = order.status.toLowerCase().replace(/\s/g, "-"); // Re-added replace for multi-word statuses
       }
 
       // Safely access properties from the new 'orderTotal' object
@@ -114,7 +132,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }</span>
                 </h2>
                 <div class="order-meta">
-                    <p><strong>Date:</strong> ${order.date || "N/A"}</p>
+                    <p><strong>Date:</strong> ${formatOrderDate(order.date)}</p>
                     <p><strong>Payment Method:</strong> ${paymentMethod}</p>
                     <p><strong>Delivery Zone:</strong> ${
                       order.customer && order.customer.zone
